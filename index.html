@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="description">
+    </div>
+    
+    <div class="container">
+        <div class="nav">
+            <div class="head">
+                <h3>ADD NEW TASK</h3>
+            </div>
+            <div class="body">
+                <div class="list">
+                    <input type="text" placeholder="taskName" name="" id="">
+                </div>
+                <div class="list">
+                    <input type="time" placeholder="timeToDo" name="" id="">
+                </div>
+                <div class="list">
+                    <textarea placeholder="description" cols="30" rows="8"></textarea>
+                </div>
+                <div class="list">
+                    <button>Confirm</button>
+                    <button>Decline</button>
+                </div>
+            </div>
+            <div class="footer">
+            </div>
+        </div>
+        <div class="head">
+            <h3>TO DO</h3>
+        </div>
+        <div class="body">
+            <div class="list task" data-description="Take it out or mom sees it.">
+                <div class="date"><p>at 9:00 am</p></div>
+                <div class="nameoftodo">Take out the trash</div>
+                <input class="check" type="checkbox" name="" id="">
+            </div>
+            <div class="list task" data-description="Take it out">
+                <div class="date"><p>at 9:00 am</p></div>
+                <div class="nameoftodo">Take out the trash</div>
+                <input class="check" type="checkbox" name="" id="">
+            </div>
+        </div>
+        <div class="footer">
+            <button onclick="OpenNav()">Add</button>
+        </div>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>
