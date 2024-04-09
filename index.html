@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- <a href="https://www.flaticon.com/free-icons/correct" title="correct icons">Correct icons created by Freepik - Flaticon</a> -->
     <div class="description">
     </div>
     
@@ -17,42 +18,44 @@
             </div>
             <div class="body">
                 <div class="list">
-                    <input type="text" placeholder="taskName" name="" id="">
+                    <input type="text" class="taskName" placeholder="taskName" name="" id="">
                 </div>
                 <div class="list">
-                    <input type="time" placeholder="timeToDo" name="" id="">
+                    <input type="time" class="taskTime" placeholder="timeToDo" name="" id="">
                 </div>
                 <div class="list">
-                    <textarea placeholder="description" cols="30" rows="8"></textarea>
-                </div>
-                <div class="list">
-                    <button>Confirm</button>
-                    <button>Decline</button>
+                    <textarea  class="taskDesc" placeholder="description (optional)"></textarea>
                 </div>
             </div>
             <div class="footer">
+                <button onclick="AddNewTask()">Confirm</button>
+                <button onclick="CloseNav()">Close</button>
             </div>
         </div>
-        <div class="head">
-            <h3>TO DO</h3>
-        </div>
-        <div class="body">
-            <div class="list task" data-description="Take it out or mom sees it.">
-                <div class="date"><p>at 9:00 am</p></div>
-                <div class="nameoftodo">Take out the trash</div>
-                <input class="check" type="checkbox" name="" id="">
+        <div class="main">
+            <div class="head">
+                <h3>TO DO</h3>
             </div>
-            <div class="list task" data-description="Take it out">
-                <div class="date"><p>at 9:00 am</p></div>
-                <div class="nameoftodo">Take out the trash</div>
-                <input class="check" type="checkbox" name="" id="">
+            <div class="body">
+                <div class="list task new" data-description="${Inputdesc.value}">
+                    <div class="date"><p>at awds</p></div>
+                    <div class="nameoftodo">awd</div>
+                    <input class="check" onchange="Check(this)" type="checkbox" name="" id="">
+                    <div class="actions">
+                        <button class="confirm"><ion-icon name="checkmark-outline"></ion-icon></button>
+                        <button class="decline"><ion-icon name="close-outline"></ion-icon></button>
+                    </div>
+                    
+                </div>
             </div>
-        </div>
-        <div class="footer">
-            <button onclick="OpenNav()">Add</button>
+            <div class="footer">
+                <button onclick="OpenNav()">Add</button>
+            </div>
         </div>
     </div>
     
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
