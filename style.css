@@ -51,6 +51,8 @@ body{
     gap: 5%;
     width: 100%;
     height: 70%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .footer{
@@ -76,12 +78,33 @@ body{
 }
 
 .list{
+    position: relative;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 20px;
     width: 100%;
-    padding: 10px;
+    margin-left: 0%;
+    transform: translateX(0) translateY(0);
+    margin-top: 0;
+    opacity: 100%;
+    padding: 10px; 
+}
+
+.list.finished .strike::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 5%;
+    background: black;
+    animation: strike 0.5s;
+}
+
+.list.vanish{
+    animation: vanish 0.5s;
+    animation-fill-mode: forwards;
 }
 
 .list.new{
@@ -97,20 +120,48 @@ body{
     }
 }
 
+@keyframes vanish{
+    0%{
+        transform: translateY(0);
+        opacity: 100%;
+    }
+    50%{
+        transform: translateX(130%);
+        opacity: 0%;
+    }
+    100%{
+        transform: translateX(130%);
+        margin-top: -10vh;
+    }
+}
+
+@keyframes strike{
+    0%{
+        width: 0;
+    }
+    100%{
+       width: 100%;
+    }
+}
+
 .description{
     position: fixed;
     width: auto;
     height: auto;
-    padding: 10px;
-    margin: 5px 5px 5px 5px;
     z-index: 10000;
     left: 0;
     top: 0;
     border: 1px solid black;
-    opacity: 0;
     background: rgb(255, 247, 233);
-    transition: 0.5s cubic-bezier(.85,-0.62,.57,1.62);
-    animation-fill-mode: forwards;
+    pointer-events: none;
+    border-radius: 20px;
+    padding: 15px;
+    transition: padding 0.5s;
+}
+
+.description.static{
+    padding: 5px;
+    border-radius: 50%;
 }
 
 input[type="checkbox"] {
@@ -156,7 +207,8 @@ button{
 
 .actions{
     position: absolute;
-    right: -5vw;
+    opacity: 0;
+    right: -10vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -166,23 +218,23 @@ button{
     background: rgb(255, 247, 233);
     border: 1px solid black;
     border-radius: 20px;
+    transition: 0.5s;
 }
 
-.confirm, .decline{
-    padding: 10px;
-    display: grid;
-    place-content: center;
-    border-radius: 50%;
+.actions.opened{
+    right: 5vw;
+    opacity: 100%;
 }
+
 
 .confirm{
-    background: rgb(210, 255, 47);
-    filter: drop-shadow(0 0 0.75rem green);
+    background: rgb(244, 255, 125);
+    filter: drop-shadow(0 0 0.75rem rgb(244, 255, 125));
 }
 
 .decline{
-    background: rgb(255, 55, 0);
-    filter: drop-shadow(0 0 0.75rem crimson);
+    background: rgb(255, 160, 133);
+    filter: drop-shadow(0 0 0.75rem rgb(255, 160, 133));
 }
 
 .nav{
@@ -196,6 +248,7 @@ button{
     border-radius: 0 20px 20px 0;
     transition: 0.5s;
     box-shadow: 0px 0 black;
+    z-index: 1000000;
 }
 
 .nav.opened{
@@ -206,7 +259,7 @@ button{
 }
 
 .nav.opened + .main{
-    background: rgba(0, 0, 0, 0.277);
+    background: rgba(192, 120, 100, 0.301);
 }
 
 textarea{
@@ -218,4 +271,12 @@ input, textarea{
     font-size: 1.5vw;
     outline: none;
     font-size: 1.3vw;
+}
+
+.loadingStatus.loading{
+    opacity: 100%;
+}
+
+.loadingStatus {
+    opacity: 0;
 }
